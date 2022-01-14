@@ -1,5 +1,5 @@
 # Token_Bucket_Filter
-The Linux kernel's network stack provides advanced network traffic controls. This repository attempts to emulate a classless qdisc (token bucket filter) to "shape" network traffic using multithreading in C. Four threads will be used during the program's execution. One thread will be for the packet arrival, one for the thread arrival, and one for each of the two servers being emulated. The program can run in one of two modes: deterministic or trace-driven. This project is intended for a Linux or macOS environment.
+The Linux kernel's network stack provides advanced network traffic controls. This repository attempts to emulate a classless qdisc (token bucket filter) to "shape" network traffic using multithreading in C. Four threads will be used during the program's execution. One thread will be for the packet arrival, one for the token arrival, and one for each of the two servers being emulated. The program can run in one of two modes: deterministic or trace-driven. This project is intended for a Linux or macOS environment.
 
 ## To compile code
 make qdisc
@@ -16,4 +16,4 @@ The default value (i.e., if it's not specified in a commandline option) for lamb
 In this mode, all inter-arrival times are equal to 1/lambda seconds, all packets require exactly P tokens, and all service times are equal to 1/mu seconds (all rounded to the nearest millisecond). If 1/lambda is greater than 10 seconds, an inter-arrival time of 10 seconds will be used. If 1/mu is greater than 10 seconds, a service time of 10 seconds will be used. 
 
 ## Trace-driven mode
-In this mode, we will drive the emulation using a trace specification file (will be referred to as a "tsfile"). Each line in the trace file specifies the inter-arrival time of a packet, the number of tokens it need in order for it to be eligiable for transmission, and its service time.
+In this mode, we will drive the emulation using a trace specification file (will be referred to as a "tsfile"). Each line in the trace file specifies the inter-arrival time of a packet, the number of tokens it need in order for it to be eligiable for transmission, and its service time. A sample trace specification file is provided and it is called "test.tsfile".
