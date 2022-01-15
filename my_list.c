@@ -158,6 +158,7 @@ int MyListInit(MyList *list) {
     list->num_members = 0;
     MyListElem *anchor_ptr = (MyListElem *) malloc(sizeof(MyListElem));
     anchor_ptr->obj = NULL;
+    list->anchor = *anchor_ptr;
     anchor_ptr->next = anchor_ptr;
     anchor_ptr->prev = anchor_ptr;
     return TRUE;
